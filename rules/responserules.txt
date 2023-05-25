@@ -1,0 +1,2 @@
+{"Action":"kill","Data":{"EventCode":"1","Image":"powershell.exe$","ParentImage":"EXCEL.EXE$"},"Message":"Excel run powershell","Type":"Process"}
+{"Action":"delete","Data":{"EventCode":"13","EventType":"SetValue","TargetObject":"SOFTWARE\\\\Microsoft\\\\Office\\\\(.*)(TrustRecords)"},"Message":"Detect Enable Macro Office","Type":"Registry"}

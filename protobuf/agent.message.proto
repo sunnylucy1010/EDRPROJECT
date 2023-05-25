@@ -1,0 +1,131 @@
+syntax="proto3";
+
+package rpc;
+
+option go_package = "./pkg/rpc";
+
+// Sysmon event code 1: Process creation
+message EventCode1 {
+    string ProcessId = 1;
+	string Action = 2;
+}
+
+// Sysmon event code 3: Network connection
+message EventCode3 {
+    string ProcessId = 1;
+    string SourceIp = 2;
+    string SourcePort = 3;
+    string DestinationIp = 4;
+    string DestinationPort = 5;
+    string Action = 6;
+}
+
+// Sysmon event code 7: Image loaded
+message EventCode7 {
+    string ProcessId = 1;
+    string ImageLoaded = 2;
+    string Action = 3;
+}
+
+// Sysmon event code 8: CreateRemoteThread
+message EventCode8 {
+    string SourceProcessId = 1;
+    string Action =2;
+}
+
+// Sysmon event code 9: RawAccessRead
+message EventCode9 {
+    string ProcessId = 1;
+	string Action = 2;
+}
+
+// Sysmon event code 10: ProcessAccess
+message EventCode10 {
+    string ProcessId = 1;
+	string Action = 2;
+}
+
+// Sysmon event code 11: FileCreate
+message EventCode11 {
+    string TargetFilename = 1;
+    string Action = 2;
+}
+
+// Sysmon event code 12: RegistryEvent (Object create and delete)
+message EventCode12 {
+    string TargetObject = 1;
+    string action = 2;
+}
+
+// Sysmon event code 13: RegistryEvent (Value Set)
+message EventCode13 {
+    string TargetObject = 1;
+    string action = 2;
+}
+
+// Sysmon event Code 14: RegistryEvent (Registry object renamed)
+message EventCode14 {
+    string EventType = 1;
+    string TargetObject = 2;
+    string NewName = 3;
+    string Action =4;
+}
+
+message NetworkAdapter {
+    string action = 1;
+}
+
+// Message returns after done request
+message ResponseResult {
+    string ResultInfo = 1;
+    bool Result = 2;
+}
+
+// File info contain file path to download
+message FileInfo{
+    string FilePath = 3;
+}
+
+// A stream to read a sequence of messages back
+message FileData{
+    bytes FileChunk = 1;
+}
+
+service Manager{
+    // Obtains the ResponseResult at a given EventCode1
+    rpc ManagerEventCode1(EventCode1) returns (ResponseResult){};
+
+    // Obtains the ResponseResult at a given EventCode3
+    rpc ManagerEventCode3(EventCode3) returns (ResponseResult){};
+
+    // Obtains the ResponseResult at a given EventCode7
+    rpc ManagerEventCode7(EventCode7) returns (ResponseResult){};
+
+    // Obtains the ResponseResult at a given EventCode8
+    rpc ManagerEventCode8(EventCode8) returns (ResponseResult){};
+
+    // Obtains the ResponseResult at a given EventCode9
+    rpc ManagerEventCode9(EventCode9) returns (ResponseResult){};
+
+    // Obtains the ResponseResult at a given EventCode10
+    rpc ManagerEventCode10(EventCode10) returns (ResponseResult){};
+
+    // Obtains the ResponseResult at a given EventCode11
+    rpc ManagerEventCode11(EventCode11) returns (ResponseResult){};
+
+    // Obtains the ResponseResult at a given EventCode12
+    rpc ManagerEventCode12(EventCode12) returns (ResponseResult){};
+
+    // Obtains the ResponseResult at a given EventCode13
+    rpc ManagerEventCode13(EventCode13) returns (ResponseResult){};
+    
+    // Obtains the ResponseResult at a given EventCode14
+    rpc ManagerEventCode14(EventCode14) returns (ResponseResult){};
+
+    // Obtains the ResponseResult at a given NetworkAdapter
+    rpc ManagerNetworkAdapter(NetworkAdapter) returns (ResponseResult){};
+
+    // Obtains the FileDatas available within the given FileInfo.  
+    // Results are streamed rather than returned at once 
+    rpc ManagerGetFile(FileInfo) returns (stream FileData){}
+}

@@ -1,0 +1,17 @@
+[Unit]
+Description=bkedr Server systemd service.
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/bkedr
+ExecStart=/opt/bkedr/bkedr
+ExecStop=/bin/kill -15 $MAINPID
+Restart=always
+# time to sleep before restarting a service
+RestartSec=1
+StartLimitInterval=0
+SuccessExitStatus=143
+
+[Install]
+WantedBy=multi-user.target
