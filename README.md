@@ -90,7 +90,7 @@ sudo /opt/splunkforwarder/bin/splunk start
 ```
 
 # Installing bkedr agent.
-- Download source code from github https://github.com/jinjimosd/bkedr.git
+- Download source code from github https://github.com/sunnylucy1010/bkedr.git
 - Create windowsagent.conf and add config.
 
 ```
