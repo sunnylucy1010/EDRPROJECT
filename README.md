@@ -19,7 +19,7 @@ tar xvzf splunkforwarder-<…>-Linux-x86_64.tgz -C /opt
 ```
 
 ## Install bkedr Server
-- Download source code from github [https://github.com/jinjimosd/bkedr.git](https://github.com/sunnylucy1010/EDRPROJECT/)
+- Download source code from github https://github.com/sunnylucy1010/EDRPROJECT/
 - Create directory configs and file server.conf
 - Run install.sh file as sudo
 ```
