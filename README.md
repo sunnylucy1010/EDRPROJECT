@@ -1,4 +1,4 @@
-# BSkedr Server
+# Bkedr Server
 
 ## Prerequisites
 Before you continue, ensure you meet the following requirements:
