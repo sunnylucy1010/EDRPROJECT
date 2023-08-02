@@ -23,7 +23,7 @@ tar xvzf splunkforwarder-<…>-Linux-x86_64.tgz -C /opt
 - Create directory configs and file server.conf
 - Run install.sh file as sudo
 ```
-git clone https://github.com/jinjimosd/bkedr.git
+git clone https://github.com/sunnylucy1010/bkedr.git
 cd bkedr
 mkdir configs
 vim configs/server.conf
